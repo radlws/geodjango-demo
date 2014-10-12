@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{# load thumbnail #}
+{% load staticfiles %}
+{% load frontendadmin_tags %}
+
+{% block content %}
+    {% for blog_entry in blog_entries %}
+    {{ blog_entry }}
+    <img src="{{ blog_entry.image.url }}" />
+    {% ifequal blog_entry.image.image_orientation "landscape" %}
+        <img src="{{ blog_entry.image.url }}" class="landscape" />
+    {% endifequal %}
+
+    {% frontendadmin_change blog_entry %}
+    {% endfor %}
+
+    <br><br>
+    {{ form }}
+   <br><br>
+
+        {{ blogentry.image }}
+<img src="{{ publication.image.url }}" />
+
+
+
+{% endblock %}
